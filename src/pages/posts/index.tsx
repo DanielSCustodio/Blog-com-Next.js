@@ -53,7 +53,7 @@ export default function Posts({ posts }: PostsProps) {
                     <h3>
                       <strong>{post.title}</strong>
                     </h3>
-                    <p>{post.excerpt.slice(0, 120)}...</p>
+                    <p>{post.excerpt.slice(0, 140)}...</p>
                   </div>
                 </a>
               </Link>
