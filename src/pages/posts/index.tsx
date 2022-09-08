@@ -23,20 +23,63 @@ export default function Posts({ posts }: PostsProps) {
     <>
       <SEO title="Posts" />
       <main className={styles.container}>
-        <section className={styles.posts}>
-          {posts.map(post => (
-            <Link href="#" key={post.slug}>
-              <a>
-                <img src={post.image} alt={post.title} />
-                <br />
-                <time>{post.updateAt}</time>
-                <h3>
-                  <strong>{post.title}</strong>
-                </h3>
-                <p>{post.excerpt}</p>
-              </a>
-            </Link>
-          ))}
+        <section className={styles.containerHeader}>
+          <div className={styles.headerLeft}>
+            <img src="rocket.svg" alt="" />
+          </div>
+          <div className={styles.headerRight}>
+            <h1>
+              Há conhecimento de dois tipos: <span>sabemos sobre</span> um
+              assunto, ou sabemos onde <span>podemos buscar</span> informação
+              sobre ele
+            </h1>
+            <p>
+              Material selecionado com os assuntos mais relevantes para
+              alavancar o seu conhecimento. <br />O Blog Dev tem o prazer em te
+              ajudar a ser um programdor melhor, absorva nosso conteúdo sem
+              moderação.
+            </p>
+          </div>
+        </section>
+        <h2>Publicações</h2>
+        <section className={styles.containerPosts}>
+          <div className={styles.posts}>
+            {posts.map(post => (
+              <Link href="#" key={post.slug}>
+                <a className={styles.singlePost}>
+                  <img src={post.image} alt={post.title} />
+                  <div>
+                    <time>{post.updateAt}</time>
+                    <h3>
+                      <strong>{post.title}</strong>
+                    </h3>
+                    <p>{post.excerpt.slice(0, 120)}...</p>
+                  </div>
+                </a>
+              </Link>
+            ))}
+          </div>
+          <div className={styles.postsRecents}>
+            <h3>Publicações Recentes</h3>
+            <aside>
+              {posts.map(
+                (post, index) =>
+                  index < 5 && (
+                    <Link href="#" key={post.slug}>
+                      <a className={styles.postsRecentsContent}>
+                        <img src={post.image} alt={post.title} />
+                        <div>
+                          <h6>
+                            <strong>{post.title}</strong>
+                          </h6>
+                          <p>{post.excerpt.slice(0, 35)}...</p>
+                        </div>
+                      </a>
+                    </Link>
+                  ),
+              )}
+            </aside>
+          </div>
         </section>
       </main>
     </>
