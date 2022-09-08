@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../styles/home.module.sass';
+import Link from 'next/link';
 import SEO from '../components/SEO';
 
 export default function Home() {
@@ -18,6 +19,11 @@ export default function Home() {
             Tudo sobre o mundo do desenvolvimento <br />
             com o <span>melhor</span> conteúdo.
           </p>
+          <button>
+            <Link href="/posts">
+              <a>Ver Posts</a>
+            </Link>
+          </button>
         </section>
         <aside>
           <img src="/home.svg" alt="Home imagem" />

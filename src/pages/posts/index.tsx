@@ -45,7 +45,7 @@ export default function Posts({ posts }: PostsProps) {
         <section className={styles.containerPosts}>
           <div className={styles.posts}>
             {posts.map(post => (
-              <Link href="#" key={post.slug}>
+              <Link href={`/posts/${post.slug}`} key={post.slug}>
                 <a className={styles.singlePost}>
                   <img src={post.image} alt={post.title} />
                   <div>
@@ -53,7 +53,7 @@ export default function Posts({ posts }: PostsProps) {
                     <h3>
                       <strong>{post.title}</strong>
                     </h3>
-                    <p>{post.excerpt.slice(0, 120)}...</p>
+                    <p>{post.excerpt.slice(0, 140)}...</p>
                   </div>
                 </a>
               </Link>
@@ -65,7 +65,7 @@ export default function Posts({ posts }: PostsProps) {
               {posts.map(
                 (post, index) =>
                   index < 5 && (
-                    <Link href="#" key={post.slug}>
+                    <Link href={`/posts/${post.slug}`} key={post.slug}>
                       <a className={styles.postsRecentsContent}>
                         <img src={post.image} alt={post.title} />
                         <div>
@@ -114,6 +114,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       posts,
     },
-    revalidate: 60 * 60 * 12,
+    revalidate: 60 * 60 * 12, //12horas
   };
 };

@@ -4,26 +4,27 @@
   display: flex
   flex-direction: column
   justify-content: space-between
+  padding-top: 5rem
+
 
   @media (max-width: 720px)
     max-width: 90vw
 
   
   h2
-    font-size: 2rem
+    font-size: 1.5rem
     color: #f4c61e
     font-weight: 100
-    background-color: #26262A
+    background-color: #202023
     padding: 1rem 0 1rem 1rem
     width: 30vw
     margin-bottom: -1rem
     border-radius: 5px
+    padding-left: 2.1rem
 
     @media (max-width: 720px)
       font-size: 1.8rem
       width: 90vw
-
-
 
 .containerHeader
   height: calc(100vh - 5rem)
@@ -42,8 +43,7 @@
   width: 50vw
 
   img
-    width: 90%
-    height: 100%
+    width: 80%
 
   @media (max-width: 720px)
     width: 80vw  
@@ -69,13 +69,9 @@
       line-height: 35px
       margin: 2rem auto
 
-
-
-
-    span
-      color: #F47C35
-      font-weight: 100
-
+  span
+    color: #F47C35
+    font-weight: 800
 
   p
     color: #f2f2f2
@@ -84,9 +80,8 @@
     font-size: 1rem
     margin:0
     text-align: left
-    font-weight: 100
+    font-weight: 700
     
-
 
 .containerPosts
   display: flex
@@ -95,9 +90,8 @@
     flex-direction: column
     max-width: 90vw
 
-
 .posts
-  background-color: #26262A
+  background-color: #202023
   max-width: 70vw
   display: flex
   flex-wrap: wrap
@@ -116,7 +110,6 @@
     margin-top: 1rem
     display: flex
     flex-direction: column
-    justify-content: flex-start
     align-items: flex-start
 
     @media (max-width: 720px)
@@ -148,11 +141,8 @@
     &:hover h3
       color: #F47C35
 
-    &:hover p
-      color: #c2c1c0
-
     &:hover img
-      filter: contrast(200%)
+      filter: contrast(150%)
 
     p
       color: #f2f2f2
@@ -180,8 +170,6 @@
     margin-top: 1rem
     max-width: 90vw
 
-
-
   h3
     font-size: 1.8rem
     color: #26262A
@@ -201,7 +189,6 @@
     
     div
 
-
       h6
         font-size: 1rem
         color: #26262A
@@ -210,7 +197,6 @@
         &:hover
           color: #F47C35
 
-      
       p
         font-size: 0.8rem
         text-align: left
