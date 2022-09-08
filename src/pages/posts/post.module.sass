@@ -5,11 +5,30 @@
 
 .post
   max-width: 70vw
+  background-color: #202023
+  padding: 3rem
+  margin-top: 2rem
+  border-radius: 5px
+
+  @media(max-width: 720px)
+    max-width: 100vw
+    overflow: hidden
+    padding: 1rem
 
   h1
     font-size: 2.5rem
     font-weight:900
     color: #f4c61e
+
+  img
+    width: 150px
+    height: 150px
+    object-fit: contain
+
+    @media(max-width: 720px)
+      width: 50px
+      height: 50px
+    
   
   time
     display: block
@@ -21,11 +40,24 @@
   .content
     margin-top: 2rem
     line-height: 2rem
-    font-size: 1.125rem
+    font-size: 1.2rem
     color: #f2f2f2
+    font-weight: 100
+    @media(max-width: 720px)
+      font-size: 0.9rem
+      line-height: 1.3rem
+      font-weight: 400
+
+
+    a
+      color:#f4c61e
+      font-weight: 400
+
+      &:hover
+        color: #f47c35
 
     p, ul
-      margin: 1.5rem 0
+      margin: 1rem 0
     
     ul
       padding-left: 1.5rem

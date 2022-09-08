@@ -1,9 +1,9 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/dist/client/link';
+import SEO from '../../components/SEO';
 import { getPrismicClient } from '../../services/prismic';
 import Prismic from '@prismicio/client';
 import { RichText } from 'prismic-dom';
-import SEO from '../../components/SEO';
 import styles from './posts.module.sass';
 
 interface Post {

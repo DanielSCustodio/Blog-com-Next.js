@@ -10,6 +10,7 @@ interface PostProps {
     title: string;
     image: string;
     content: string;
+    excerpt: string;
     updateAt: string;
   };
 }
@@ -51,7 +52,11 @@ export const getStaticProps: GetStaticProps = async context => {
     slug,
     title: RichText.asText(response.data.title),
     image: response.data.image.url,
-    content: RichText.asText(response.data.content),
+    content: RichText.asHtml(response.data.content),
+    excerpt:
+      response.data.content.find(
+        (content: { type: string }) => content.type === 'paragraph',
+      )?.text ?? '',
     updateAt: new Date(response.last_publication_date).toLocaleString('pt-BR', {
       day: '2-digit',
       month: 'long',
