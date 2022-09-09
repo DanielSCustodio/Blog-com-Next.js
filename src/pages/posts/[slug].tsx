@@ -46,7 +46,7 @@ export default function Post({ post, posts }: PostsPropsRecents) {
               {posts &&
                 posts.map(
                   (post, index) =>
-                    index < 4 && (
+                    index < 6 && (
                       <Link href={`/posts/${post.slug}`} key={post.slug}>
                         <a className={styles.postsRecentsContent}>
                           <img src={post.image} alt={post.title} />
