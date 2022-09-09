@@ -1,7 +1,8 @@
 .container
   padding-top: 5rem
-  max-width: 90vw
+  max-width: 95vw
   margin: auto
+  display: flex
 
 .post
   max-width: 70vw
@@ -64,3 +65,52 @@
 
       li
         margin: 0.5rem 0
+
+.postsRecents
+  max-width: 24vw
+  margin: 0 1rem
+  background-color:#ffffff
+  padding: 1rem
+  border-radius: 5px
+  margin-top: 2rem
+  position: fixed
+  right: 0
+
+  @media (max-width: 720px)
+    margin: 0 
+    margin-top: 1rem
+    max-width: 90vw
+
+  h3
+    font-size: 1.8rem
+    color: #26262A
+    margin: 0
+
+  .postsRecentsContent
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    margin-top: 2rem
+
+    img
+      width: 40px
+      height: 40px
+      object-fit: contain
+      margin-right: 1rem
+    
+    div
+
+      h6
+        font-size: 1rem
+        color: #26262A
+        margin: 0
+
+        &:hover
+          color: #F47C35
+
+      p
+        font-size: 0.8rem
+        text-align: left
+        margin: 0
+        color: #26262ad2
+
