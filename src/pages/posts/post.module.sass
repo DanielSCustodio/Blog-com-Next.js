@@ -1,7 +1,12 @@
 .container
   padding-top: 5rem
-  max-width: 90vw
+  max-width: 95vw
   margin: auto
+  display: flex
+
+  @media(max-width: 720px)
+    flex-direction: column
+    align-items: center
 
 .post
   max-width: 70vw
@@ -11,7 +16,7 @@
   border-radius: 5px
 
   @media(max-width: 720px)
-    max-width: 100vw
+    max-width: 90vw
     overflow: hidden
     padding: 1rem
 
@@ -19,6 +24,9 @@
     font-size: 2.5rem
     font-weight:900
     color: #f4c61e
+
+    @media (max-width: 720px)
+      font-size:1.8rem
 
   img
     width: 150px
@@ -64,3 +72,51 @@
 
       li
         margin: 0.5rem 0
+
+.postsRecents
+  max-width: 25vw
+  margin: 2rem 0 0 1rem
+  background-color:#ffffff
+  padding: 1rem
+  border-radius: 5px
+  height: 90vh
+
+  @media (max-width: 720px)
+    max-width: 90vw
+    margin: 0
+    margin-top: 1rem
+
+
+  h3
+    font-size: 1.8rem
+    color: #26262A
+    margin: 0
+
+  .postsRecentsContent
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    margin-top: 2rem
+
+    img
+      width: 40px
+      height: 40px
+      object-fit: contain
+      margin-right: 1rem
+    
+    div
+
+      h6
+        font-size: 1rem
+        color: #26262A
+        margin: 0
+
+        &:hover
+          color: #F47C35
+
+      p
+        font-size: 0.8rem
+        text-align: left
+        margin: 0
+        color: #26262ad2
+
