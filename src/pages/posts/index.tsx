@@ -59,31 +59,35 @@ export default function Posts({ posts }: PostsProps) {
         <h2>Publicações</h2>
         <section className={styles.containerPosts}>
           <div className={styles.posts}>
-            {posts
-              .sort(function (a, b) {
-                return a.updateAt > b.updateAt
-                  ? -1
-                  : a.updateAt > b.updateAt
-                  ? 1
-                  : 0;
-              })
-              .map(
-                (post, index) =>
-                  index < count && (
-                    <Link href={`/posts/${post.slug}`} key={post.slug}>
-                      <a className={styles.singlePost}>
-                        <img src={post.image} alt={post.title} />
-                        <div>
-                          <time>{post.updateAt}</time>
-                          <h3>
-                            <strong>{post.title}</strong>
-                          </h3>
-                          <p>{post.excerpt.slice(0, 140)}...</p>
-                        </div>
-                      </a>
-                    </Link>
-                  ),
-              )}
+            {posts &&
+              posts
+                .sort(function (a, b) {
+                  return a.updateAt > b.updateAt
+                    ? -1
+                    : a.updateAt > b.updateAt
+                    ? 1
+                    : 0;
+                })
+                .map(
+                  (post, index) =>
+                    index < count && (
+                      <Link
+                        href={`${process.env.NEXT_PUBLIC_SITE_URL}/posts/${post.slug}`}
+                        key={post.slug}
+                      >
+                        <a className={styles.singlePost}>
+                          <img src={post.image} alt={post.title} />
+                          <div>
+                            <time>{post.updateAt}</time>
+                            <h3>
+                              <strong>{post.title}</strong>
+                            </h3>
+                            <p>{post.excerpt.slice(0, 140)}...</p>
+                          </div>
+                        </a>
+                      </Link>
+                    ),
+                )}
             <button onClick={handleLoadMore} disabled={messageAllPosts}>
               Ver Mais Posts
             </button>
@@ -99,7 +103,10 @@ export default function Posts({ posts }: PostsProps) {
                   .map(
                     (post, index) =>
                       index < 5 && (
-                        <Link href={`/posts/${post.slug}`} key={post.slug}>
+                        <Link
+                          href={`${process.env.NEXT_PUBLIC_SITE_URL}/posts/${post.slug}`}
+                          key={post.slug}
+                        >
                           <a className={styles.postsRecentsContent}>
                             <img src={post.image} alt={post.title} />
                             <div>
