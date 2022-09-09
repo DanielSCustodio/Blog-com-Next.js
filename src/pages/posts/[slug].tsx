@@ -32,6 +32,9 @@ export default function Post({ post, posts }: PostsPropsRecents) {
       {post && (
         <main className={styles.container}>
           <article className={styles.post}>
+            <Link href="/posts">
+              <a>↩ Voltar</a>
+            </Link>
             <h1>{post.title}</h1>
             <img src={post.image} alt={post.title} />
             <time>{post.updateAt}</time>
@@ -111,8 +114,6 @@ export const getStaticProps: GetStaticProps = async context => {
       year: 'numeric',
     }),
   };
-
-  console.log(post);
 
   return {
     props: {

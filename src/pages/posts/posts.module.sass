@@ -82,6 +82,10 @@
     margin:0
     text-align: left
     font-weight: 700
+
+    span
+      color: #f4c61e
+
     
 
 .containerPosts
@@ -104,12 +108,53 @@
   @media (max-width: 720px)
     max-width: 90vw
 
+  button
+    background-color: #f4c61e
+    color: #26262A
+    font-size: 1rem
+    font-weight: 100
+    text-transform: uppercase
+    width: 13rem
+    height: 3rem
+    border: 0
+    border-radius: 50px
+    margin-top: 3rem
+    transition: background 0.2s
+
+    @media (max-width: 720px)
+      width: 10rem
+      height: 3rem
+      margin: 2rem auto
+      font-size: 1rem
+
+    &:disabled
+      background-color: #d7d7d748
+
+    &:disabled:hover
+      cursor: not-allowed
+      background-color: #d7d7d748
+
+
+
+
+    &:hover
+      background-color: #F47C35
+      
+  p
+    color: #F47C35
+    margin: 4rem
+    text-align: center
+
+    @media (max-width: 720px)
+      margin: 0
+      margin-left: 1rem
+
 
   .singlePost
     max-width: 280px
     height: auto
     margin-right: 1rem
-    margin-top: 1rem
+    margin-top: 3rem
     display: flex
     flex-direction: column
     align-items: flex-start
@@ -118,8 +163,8 @@
       margin-top: 3rem
       border-bottom:  1px solid #f4c61e
   img
-    width:50px
-    height: 50px
+    width:40px
+    height: 40px
     object-fit: contain
 
     @media (max-width: 720px)
@@ -150,7 +195,7 @@
       color: #f2f2f2
       margin-top: 0.5rem
       line-height: 21px
-      font-size: 1rem
+      font-size: 0.9rem
       margin:0
       text-align: left
     

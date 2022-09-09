@@ -5,6 +5,7 @@ import { getPrismicClient } from '../../services/prismic';
 import Prismic from '@prismicio/client';
 import { RichText } from 'prismic-dom';
 import styles from './posts.module.sass';
+import React from 'react';
 
 interface Post {
   slug: string;
@@ -19,6 +20,20 @@ interface PostsProps {
 }
 
 export default function Posts({ posts }: PostsProps) {
+  const [count, setCount] = React.useState(6);
+  const [messageAllPosts, setMessageAllPosts] = React.useState(false);
+
+  let othersPosts = [];
+  const copyPosts = [...posts];
+  othersPosts = copyPosts;
+
+  function handleLoadMore() {
+    setCount(count + 3);
+    if (posts.length <= count) {
+      setMessageAllPosts(true);
+    }
+  }
+
   return (
     <>
       <SEO title="Posts" />
@@ -35,49 +50,68 @@ export default function Posts({ posts }: PostsProps) {
             </h1>
             <p>
               Material selecionado com os assuntos mais relevantes para
-              alavancar o seu conhecimento. <br />O Blog Dev tem o prazer em te
-              ajudar a ser um programdor melhor, absorva nosso conteúdo sem
-              moderação.
+              alavancar o seu conhecimento. <br /> O<span> Blog Dev</span> tem o
+              prazer em te ajudar a ser um programdor melhor, absorva nosso
+              conteúdo sem moderação.
             </p>
           </div>
         </section>
         <h2>Publicações</h2>
         <section className={styles.containerPosts}>
           <div className={styles.posts}>
-            {posts.map(post => (
-              <Link href={`/posts/${post.slug}`} key={post.slug}>
-                <a className={styles.singlePost}>
-                  <img src={post.image} alt={post.title} />
-                  <div>
-                    <time>{post.updateAt}</time>
-                    <h3>
-                      <strong>{post.title}</strong>
-                    </h3>
-                    <p>{post.excerpt.slice(0, 140)}...</p>
-                  </div>
-                </a>
-              </Link>
-            ))}
-          </div>
-          <div className={styles.postsRecents}>
-            <h3>Publicações Recentes</h3>
-            <aside>
-              {posts.map(
+            {posts
+              .sort(function (a, b) {
+                return a.updateAt > b.updateAt
+                  ? -1
+                  : a.updateAt > b.updateAt
+                  ? 1
+                  : 0;
+              })
+              .map(
                 (post, index) =>
-                  index < 5 && (
+                  index < count && (
                     <Link href={`/posts/${post.slug}`} key={post.slug}>
-                      <a className={styles.postsRecentsContent}>
+                      <a className={styles.singlePost}>
                         <img src={post.image} alt={post.title} />
                         <div>
-                          <h6>
+                          <time>{post.updateAt}</time>
+                          <h3>
                             <strong>{post.title}</strong>
-                          </h6>
-                          <p>{post.excerpt.slice(0, 35)}...</p>
+                          </h3>
+                          <p>{post.excerpt.slice(0, 140)}...</p>
                         </div>
                       </a>
                     </Link>
                   ),
               )}
+            <button onClick={handleLoadMore} disabled={messageAllPosts}>
+              Ver Mais Posts
+            </button>
+            {messageAllPosts && <p>Todos os posts já foram carregados</p>}
+          </div>
+
+          <div className={styles.postsRecents}>
+            <h3>Outras Publicações</h3>
+            <aside>
+              {othersPosts &&
+                othersPosts
+                  .sort(() => Math.random() - 0.4)
+                  .map(
+                    (post, index) =>
+                      index < 5 && (
+                        <Link href={`/posts/${post.slug}`} key={post.slug}>
+                          <a className={styles.postsRecentsContent}>
+                            <img src={post.image} alt={post.title} />
+                            <div>
+                              <h6>
+                                <strong>{post.title}</strong>
+                              </h6>
+                              <p>{post.excerpt.slice(0, 65)}...</p>
+                            </div>
+                          </a>
+                        </Link>
+                      ),
+                  )}
             </aside>
           </div>
         </section>
