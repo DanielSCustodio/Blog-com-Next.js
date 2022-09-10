@@ -17,14 +17,14 @@ export function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <img src="linkedin.svg" alt="linkedin" />
+              <img src="linkedin.png" alt="linkedin" />
             </a>
             <a
               href="https://github.com/DanielSCustodio"
               target="_blank"
               rel="noreferrer"
             >
-              <img src="github.svg" alt="github" />
+              <img src="github.png" alt="github" />
             </a>
           </div>
         </section>
