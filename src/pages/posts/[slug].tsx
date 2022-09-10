@@ -5,6 +5,7 @@ import Prismic from '@prismicio/client';
 import Link from 'next/dist/client/link';
 import SEO from '../../components/SEO';
 import styles from './post.module.sass';
+import { useRouter } from 'next/router';
 
 interface PostRecent {
   title: string;
@@ -26,6 +27,10 @@ interface PostsPropsRecents {
 }
 
 export default function Post({ post, posts }: PostsPropsRecents) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <p>Carregando...</p>;
+  }
   return (
     <>
       <SEO title="Post" />
@@ -114,6 +119,12 @@ export const getStaticProps: GetStaticProps = async context => {
       year: 'numeric',
     }),
   };
+
+  if (!response) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {

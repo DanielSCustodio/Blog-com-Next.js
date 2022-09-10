@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ActiveLink } from '../ActiveLink';
-import style from './style.module.sass';
+import style from './header.module.sass';
 
 export function Header() {
   return (
