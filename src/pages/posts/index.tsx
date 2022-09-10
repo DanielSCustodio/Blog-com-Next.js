@@ -101,7 +101,7 @@ export default function Posts({ posts, othersPosts }: PostsProps) {
               {othersPosts &&
                 othersPosts.map(
                   (post, index) =>
-                    index < 5 && (
+                    index < 6 && (
                       <Link href={`/posts/${post.slug}`} key={post.slug}>
                         <a className={styles.postsRecentsContent}>
                           <img src={post.image} alt={post.title} />
