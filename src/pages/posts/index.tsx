@@ -15,17 +15,21 @@ interface Post {
   updateAt: string;
 }
 
-interface PostsProps {
-  posts: Post[];
+interface OthersPosts {
+  slug: string;
+  title: string;
+  image: string;
+  excerpt: string;
 }
 
-export default function Posts({ posts }: PostsProps) {
+interface PostsProps {
+  posts: Post[];
+  othersPosts: OthersPosts[];
+}
+
+export default function Posts({ posts, othersPosts }: PostsProps) {
   const [count, setCount] = React.useState(6);
   const [messageAllPosts, setMessageAllPosts] = React.useState(false);
-
-  let othersPosts = [];
-  const copyPosts = [...posts];
-  othersPosts = copyPosts;
 
   function handleLoadMore() {
     setCount(count + 3);
@@ -95,24 +99,22 @@ export default function Posts({ posts }: PostsProps) {
             <h3>Outras Publicações</h3>
             <aside>
               {othersPosts &&
-                othersPosts
-                  .sort(() => Math.random() - 0.4)
-                  .map(
-                    (post, index) =>
-                      index < 5 && (
-                        <Link href={`/posts/${post.slug}`} key={post.slug}>
-                          <a className={styles.postsRecentsContent}>
-                            <img src={post.image} alt={post.title} />
-                            <div>
-                              <h6>
-                                <strong>{post.title}</strong>
-                              </h6>
-                              <p>{post.excerpt.slice(0, 65)}...</p>
-                            </div>
-                          </a>
-                        </Link>
-                      ),
-                  )}
+                othersPosts.map(
+                  (post, index) =>
+                    index < 5 && (
+                      <Link href={`/posts/${post.slug}`} key={post.slug}>
+                        <a className={styles.postsRecentsContent}>
+                          <img src={post.image} alt={post.title} />
+                          <div>
+                            <h6>
+                              <strong>{post.title}</strong>
+                            </h6>
+                            <p>{post.excerpt.slice(0, 65)}...</p>
+                          </div>
+                        </a>
+                      </Link>
+                    ),
+                )}
             </aside>
           </div>
         </section>
@@ -129,7 +131,25 @@ export const getStaticProps: GetStaticProps = async () => {
       fetch: ['post.title', 'post.content', 'post.image'],
     },
   );
-  const posts = response.results.map(post => {
+  const posts = response.results
+    .sort(() => Math.random() - 0.5)
+    .map(post => {
+      return {
+        slug: post.uid,
+        title: RichText.asText(post.data.title),
+        image: post.data.image.url,
+        excerpt:
+          post.data.content.find(content => content.type === 'paragraph')
+            ?.text ?? '',
+        updateAt: new Date(post.last_publication_date).toLocaleString('pt-BR', {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+        }),
+      };
+    });
+
+  const othersPosts = response.results.map(post => {
     return {
       slug: post.uid,
       title: RichText.asText(post.data.title),
@@ -137,17 +157,13 @@ export const getStaticProps: GetStaticProps = async () => {
       excerpt:
         post.data.content.find(content => content.type === 'paragraph')?.text ??
         '',
-      updateAt: new Date(post.last_publication_date).toLocaleString('pt-BR', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric',
-      }),
     };
   });
 
   return {
     props: {
       posts,
+      othersPosts,
     },
     revalidate: 60 * 60 * 12, //12horas
   };
