@@ -33,7 +33,7 @@ export default function Post({ post, posts }: PostsPropsRecents) {
   }
   return (
     <>
-      <SEO title="Post" />
+      <SEO title={post.title} />
       {post && (
         <main className={styles.container}>
           <article className={styles.post}>
