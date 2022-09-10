@@ -1,5 +1,6 @@
 # Blog Dev
-![2022-09-08_11-20](https://user-images.githubusercontent.com/29557187/189146924-4143460f-6803-40e6-b46e-448998eb01e1.png)
+![2022-09-10_00-57](https://user-images.githubusercontent.com/29557187/189467819-d4687fc8-0316-4077-9534-e7810a36aa11.png)
+
 
 # Contexto
 Um blog sobre programação, consumindo uma API do Prismic (Headless CMS).<br>
