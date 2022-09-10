@@ -62,7 +62,7 @@ export default function Post({ post, posts }: PostsPropsRecents) {
                             <h6>
                               <strong>{post.title}</strong>
                             </h6>
-                            <p>{post.excerpt.slice(0, 45)}...</p>
+                            <p>{post.excerpt.slice(0, 85)}...</p>
                           </div>
                         </a>
                       </Link>
