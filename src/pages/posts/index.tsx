@@ -71,10 +71,7 @@ export default function Posts({ posts }: PostsProps) {
                 .map(
                   (post, index) =>
                     index < count && (
-                      <Link
-                        href={`${process.env.NEXT_PUBLIC_SITE_URL}/posts/${post.slug}`}
-                        key={post.slug}
-                      >
+                      <Link href={`posts/${post.slug}`} key={post.slug}>
                         <a className={styles.singlePost}>
                           <img src={post.image} alt={post.title} />
                           <div>
@@ -103,10 +100,7 @@ export default function Posts({ posts }: PostsProps) {
                   .map(
                     (post, index) =>
                       index < 5 && (
-                        <Link
-                          href={`${process.env.NEXT_PUBLIC_SITE_URL}/posts/${post.slug}`}
-                          key={post.slug}
-                        >
+                        <Link href={`/posts/${post.slug}`} key={post.slug}>
                           <a className={styles.postsRecentsContent}>
                             <img src={post.image} alt={post.title} />
                             <div>
