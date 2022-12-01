@@ -19,7 +19,7 @@ Back-end:
 
 ## Variáveis de ambiente
 Link para pegar os dados das variáveis: https://customwebsite.prismic.io/settings/apps/<br/>
-No arquivo ``.env.development`` crie as seguintes variáveis de ambiente.<br/>
+No arquivo ``.env.development`` crie as seguintes variáveis de ambiente:<br/>
 <br/>
 ```PRISMIC_ENDPOINT```   =  API endpoint<br/>
 <br/>
