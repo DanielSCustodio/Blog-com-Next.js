@@ -17,7 +17,15 @@ Front-end:
 Back-end:
 > Desenvolvido usando: Prismic Headless CMS.
 
-
+## Variáveis de ambiente
+Link para pegar os dados das variáveis: https://customwebsite.prismic.io/settings/apps/<br/>
+No arquivo ``.env.development`` crie as seguintes variáveis de ambiente.<br/>
+<br/>
+```PRISMIC_ENDPOINT```   =  API endpoint<br/>
+<br/>
+ ```PRISMIC_ACESS_TOKEN``` = Generate an Access Token<br/>
+<br/>
+```NEXT_PUBLIC_SITE_URL``` = é a URL atual do seu projeto.
 ## Instalando Dependências
 
 > Execute o comando na pasta raiz
