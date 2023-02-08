@@ -9,7 +9,7 @@ O gerenciamento e criação do conteúdo que é consumido da API fica a cargo da
 ## Deploy
 Deploy na Vercel: https://blogdev-three.vercel.app/
 
-## Tecnologias usadas
+## Tecnologias
 
 Front-end:
 > Desenvolvido usando: TypeScript, React, Next.js, SASS.
